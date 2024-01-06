@@ -3,13 +3,8 @@ package org.galegofer.spring.data.querydsl.value.operators;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.DatePath;
 import org.apache.commons.lang3.Validate;
-import org.springframework.cglib.core.Local;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
 import java.util.List;
 
 class DatePathExpressionProviderImpl extends BaseExpressionProvider<DatePath> {
@@ -90,8 +85,7 @@ class DatePathExpressionProviderImpl extends BaseExpressionProvider<DatePath> {
         }
     }
 
-    private Date convertToDate(String dateString) {
-        LocalDate date = LocalDate.parse(dateString);
-        return Date.from(date.atStartOfDay().toInstant(java.time.ZoneOffset.UTC));
+    private LocalDate convertToDate(String dateString) {
+        return LocalDate.parse(dateString);
     }
 }
